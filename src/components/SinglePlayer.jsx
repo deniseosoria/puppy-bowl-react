@@ -1,68 +1,77 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 
-const SinglePlayer = ({ setSelectedPlayerID, selectedPlayerID }) => {
-  const [player, setPlayer] = useState([null]);
-  const [error, setError] = useState([null]);
+const SinglePlayer = () => {
+  const {  id } = useParams(); // Get the player ID from the route
+  const [player, setPlayer] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const cohortName = "2409-GHP-ET-WEB-PT";
-  const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players`;
+  const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players/${id}`;
 
   useEffect(() => {
-    async function fetchSinglePlayer() {
+    async function fetchPlayer() {
       try {
-        console.log("Fetching player with ID:", selectedPlayerID);
-        const response = await fetch(`${API_URL}/${selectedPlayerID}`);
-        console.log("API Response:", response);
-
+        const response = await fetch(API_URL);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const json = await response.json();
-        console.log("Parsed JSON:", json);
+        const result = await response.json();
+        console.log("API Response:", result); // Debug API response
 
-        setPlayer(json.data.player); // set player with data fetched
-        setError(null); // Clear any previous errors
-      } catch (err) {
-        console.error(`Error fetching player #${selectedPlayerID}:`, err);
-        setError("Error fetching player data. Please try again later");
+        if (result?.data) {
+          setPlayer(result.data.player);
+        } else {
+          throw new Error("Player data not found in response.");
+        }
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching player:", error);
+        setError("Failed to fetch player details.");
+        setIsLoading(false);
       }
     }
-    fetchSinglePlayer();
-  }, [selectedPlayerID]);
 
-  // Fallback for loading or error
+    fetchPlayer();
+  }, [id]); // Re-fetch if the ID changes
+
+  if (isLoading) {
+    return <h2>Loading player details...</h2>;
+  }
+
   if (error) {
     return (
       <div>
-        <h1>Error</h1>
+        <h2>Error</h2>
         <p>{error}</p>
-        <button onClick={() => setSelectedPlayerID(null)}>
-          Back to all players
-        </button>
+        <Link to="/">Back to All Players</Link>
       </div>
     );
   }
 
   if (!player) {
-    return <h1>Loading...</h1>;
+    return (
+      <div>
+        <h2>Player not found.</h2>
+        <Link to="/">Back to All Players</Link>
+      </div>
+    );
   }
 
   return (
     <div>
-      <h1>Single Player</h1>
-      <h3>{player.name}</h3>
-      <h3>ID: {player.id}</h3>
+      <h1>{player.name || "Unknown Player"}</h1>
       <img
-        src={player.imageUrl}
-        alt={player.name}
-        style={{ width: "200px", height: "150px" }}
+        src={player.imageUrl || "https://via.placeholder.com/200"}
+        alt={player.name || "Unknown"}
+        style={{ width: "200px", height: "200px", objectFit: "cover" }}
       />
-      <h4>{player.breed}</h4>
-      <h4>{player.status}</h4>
-      <button onClick={() => setSelectedPlayerID(null)}>
-        Back to all players
-      </button>
+      <h3>ID: {player.id || "N/A"}</h3>
+      <h3>Breed: {player.breed || "Unknown"}</h3>
+      <h3>Status: {player.status || "N/A"}</h3>
+      <Link to="/">Back to All Players</Link>
     </div>
   );
 };

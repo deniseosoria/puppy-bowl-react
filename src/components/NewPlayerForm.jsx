@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-const NewPlayerForm = () => {
+const NewPlayerForm = ({ refreshPlayers }) => {
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
   const [urlImage, setUrlImage] = useState("");
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // For loading state
 
   const cohortName = "2409-GHP-ET-WEB-PT";
   const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players`;
@@ -14,7 +15,8 @@ const NewPlayerForm = () => {
   // ADD NEW PLAYER with API
 
   async function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
+    setIsSubmitting(true); // Set loading state
     const newPlayer = { name, breed, imageUrl: urlImage, status };
 
     try {
@@ -28,6 +30,7 @@ const NewPlayerForm = () => {
       if (json.success && json.data.newPlayer) {
         console.log("Player added successfully:", json.data.newPlayer);
         setSuccessMessage("Player added successfully");
+        setError("");
 
         // Clear the form
         setName("");
@@ -36,33 +39,34 @@ const NewPlayerForm = () => {
         setStatus("");
         setError("");
 
+        // Refresh the players list dynamically
+        refreshPlayers();
       } else {
         console.error("Error adding player:", json);
-        setError("Failed to add the player. Please check the input and try again.");
+        setError(
+          "Failed to add the player. Please check the input and try again."
+        );
       }
-
     } catch (err) {
       console.error("Oops, something went wrong with adding that player!", err);
       setError("An unexpected error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false); // Reset loading state
     }
   }
 
   return (
-    <div className="puppybowl-container">
-      <div className="form">
-        <form onSubmit={handleSubmit}>
-          <h2>New Player Form</h2>
-
+    <div className="form-container">
+      <h2>New Player Form</h2>
+      <div>
+        <form  className="form" onSubmit={handleSubmit}>
+          {/* Display error or success messages */}
           {error && <p style={{ color: "red" }}>{error}</p>}
-          {successMessage && (
-            <p style={{ color: "green" }}>
-              {successMessage}
-            </p> /* Display success */
-          )}
+          {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
 
-          <div>
+          <div className="input-container">
             <label>
-              Name:
+              Name:{" "}
               <input
                 type="text"
                 name="name"
@@ -73,9 +77,9 @@ const NewPlayerForm = () => {
             </label>
           </div>
 
-          <div>
+          <div className="input-container">
             <label>
-              Breed:
+              Breed:{" "}
               <input
                 type="text"
                 name="breed"
@@ -86,9 +90,9 @@ const NewPlayerForm = () => {
             </label>
           </div>
 
-          <div>
+          <div className="input-container">
             <label>
-              Image URL:
+              Image URL:{" "}
               <input
                 type="url"
                 name="imageUrl"
@@ -99,9 +103,9 @@ const NewPlayerForm = () => {
             </label>
           </div>
 
-          <div>
+          <div className="input-container">
             <label>
-              Status:
+              Status:{" "}
               <select
                 name="status"
                 value={status}
@@ -116,7 +120,9 @@ const NewPlayerForm = () => {
           </div>
 
           <div>
-            <button type="submit">Add Puppy</button>
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Adding..." : "Add Puppy"}
+            </button>
           </div>
         </form>
       </div>

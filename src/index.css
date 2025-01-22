@@ -3,9 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: light;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(to right, rgb(250, 146, 163), green); /* Gradient from pink to green */
+  padding: 20px; /* Optional padding */
+  min-height: 100vh; /* Make it cover the full viewport height */;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,11 +32,6 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -54,15 +51,192 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #765992,
   }
   a:hover {
     color: #747bff;
   }
   button {
     background-color: #f9f9f9;
+  }
+
+  header {
+    margin: 7em;
+  }
+
+  .h1 {
+    font-size: 3.2em;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #213547;
+  }
+
+  .h1:hover {
+    color: #43607a;
+  }
+
+  .search-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    padding: 10px;
+    
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    border-radius: 17px;
+    color: #313131;
+    background-color: #eae8eb;
+    font-size: 15px;
+    width: 38em;
+  }
+
+  .search-bar a {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    font-size: 1em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    font-weight: bold;
+    display: block;
+    margin: 10px 0;
+    color: #242424;
+    width: 150px;
+  }
+
+  .search-bar a:hover {
+    border-color: #646cff;
+    color: #242424;
+  }
+
+  #player-form{
+    margin: 0;
+  }
+
+
+  .form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0px;
+  }
+
+  .form {
+    background-color: #c6bfc9;
+    border: 1px solid #ccc;
+    border-radius: 17px;
+    padding: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    justify-content:  center;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    height: 100px;
+    width: 79rem;
+    margin-bottom: 30px;
+  }
+
+
+  .input-container {
+    padding: 7px;
+  }
+
+  select,
+  input {
+    padding: 15px;
+    width: 17em;
+    box-sizing: border-box;
+    border: 0px;
+    border-radius: 17px;
+    color: #464545;
+    background-color: #eae8eb;
+    font-size: 14px;
+    text-align: center;
+    margin: 10px 0px;
+  }
+
+  .form button{
+    margin-top: 24px;
+  }
+
+
+  #players {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* General styles for the container */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    gap: 20px; /* Space between grid items */
+    padding: 0;
+    list-style-type: none;
+  }
+
+  /* Styles for each player card */
+  .grid-item {
+    border: 1px solid #ccc;
+    border-radius: 17px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    background-color: #c6bfc9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Image styling */
+  .grid-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* Link styling */
+  .grid-item a {
+    text-decoration: none;
+    color: #213547;
+    font-weight: bold;
+    display: block;
+    padding: 5px 10px;
+    margin: 7px 0;
+    width: 100px;
+  }
+
+  .grid-item a:hover {
+    border: 1px solid #646cff;
+  }
+
+  /* Button styling */
+  .grid-item button {
+    background: none;
+    border: 1px solid red;
+    border-radius: 4px;
+    padding: 5px 10px;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .grid-item button:hover {
+    background-color: red;
+    color: white;
   }
 }

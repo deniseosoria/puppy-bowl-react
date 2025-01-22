@@ -1,24 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const AllPlayers = ({ setSelectedPlayerID }) => {
-  const [players, setPlayers] = useState([]);
-
-  const cohortName = "2409-GHP-ET-WEB-PT";
-  const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players`;
-
-  useEffect(() => {
-    async function fetchAllPlayers() {
-      try {
-        const response = await fetch(API_URL);
-        const result = await response.json();
-        setPlayers(result.data.players);
-      } catch (error) {
-        console.error("Error fetching players:", error);
-      }
-    }
-
-    fetchAllPlayers();
-  }, []);
+const AllPlayers = ({ players, setPlayers, API_URL }) => {
+  if (players.length === 0) {
+    return <h2>No players found.</h2>;
+  }
 
   async function handleDelete(playerId) {
     try {
@@ -45,28 +31,19 @@ const AllPlayers = ({ setSelectedPlayerID }) => {
   return (
     <div>
       <h2>All Players</h2>
-      <ul style={{ listStyleType: "none" }}>
+      <div className="grid-container">
         {players.map((player) => (
-          <li key={player.id}>
+          <div className="grid-item" key={player.id}>
             <h3>{player.name}</h3>
-            <h3>ID: {player.id}</h3>
-            <img
-              src={player.imageUrl}
-              alt={player.name}
-              style={{ width: "200px", height: "150px" }}
-            />
+            <img src={player.imageUrl} alt={player.name} />
             <br />
+
+            <Link to={`/player/${player.id}`}>More Details</Link>
+
             <button onClick={() => handleDelete(player.id)}>Delete</button>
-            <button
-              onClick={() => {
-                setSelectedPlayerID(player.id);
-              }}
-            >
-              More Details
-            </button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
