@@ -28,7 +28,6 @@ const NewPlayerForm = ({ refreshPlayers }) => {
       const json = await response.json();
 
       if (json.success && json.data.newPlayer) {
-        console.log("Player added successfully:", json.data.newPlayer);
         setSuccessMessage("Player added successfully");
         setError("");
 
@@ -42,13 +41,11 @@ const NewPlayerForm = ({ refreshPlayers }) => {
         // Refresh the players list dynamically
         refreshPlayers();
       } else {
-        console.error("Error adding player:", json);
         setError(
           "Failed to add the player. Please check the input and try again."
         );
       }
     } catch (err) {
-      console.error("Oops, something went wrong with adding that player!", err);
       setError("An unexpected error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false); // Reset loading state

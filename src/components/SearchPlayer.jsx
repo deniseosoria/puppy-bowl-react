@@ -33,7 +33,6 @@ const SearchPlayer = ({ players, setPlayers, API_URL }) => {
       // Update state to remove deleted player
       setPlayers((prevPlayers) => prevPlayers.filter((p) => p.id !== playerId));
     } catch (err) {
-      console.error(`Error removing player #${playerId}:`, err);
     }
   }
 
