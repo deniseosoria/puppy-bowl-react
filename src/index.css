@@ -5,7 +5,6 @@
 
   color-scheme: light;
   color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(to right, rgb(250, 146, 163), green); /* Gradient from pink to green */
   padding: 20px; /* Optional padding */
   min-height: 100vh; /* Make it cover the full viewport height */;
 
@@ -131,7 +130,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px 0px;
+    /* margin: 40px 0px; */
   }
 
   .form {
@@ -143,15 +142,16 @@ button:focus-visible {
     justify-content:  center;
     font-size: 15px;
     font-weight: 600;
-    display: flex;
-    height: 100px;
-    width: 79rem;
+    /* display: flex; */
+    height: 400px;
+    /* width: 79rem; */
     margin-bottom: 30px;
   }
 
 
   .input-container {
     padding: 7px;
+
   }
 
   select,
@@ -182,23 +182,27 @@ button:focus-visible {
   /* General styles for the container */
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
-    gap: 20px; /* Space between grid items */
+    grid-template-columns: repeat(3, 1fr); /* Default: 3 columns */
+    gap: 20px;
     padding: 0;
     list-style-type: none;
+    margin: 30px auto;
+    max-width: 1200px; /* Ensures it has enough space */
+    width: 100%;
   }
 
   /* Styles for each player card */
   .grid-item {
     border: 1px solid #ccc;
-    border-radius: 17px;
-    border-radius: 8px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
     padding: 10px;
     background-color: #c6bfc9;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 300px; /* Ensures grid items fit */
+    text-decoration: none;
   }
 
   /* Image styling */
@@ -238,5 +242,20 @@ button:focus-visible {
   .grid-item button:hover {
     background-color: red;
     color: white;
+  }
+}
+
+/* ************************************************* */
+
+/* Responsive grid adjustments */
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 column on small screens */
   }
 }

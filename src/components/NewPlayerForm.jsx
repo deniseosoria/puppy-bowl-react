@@ -63,11 +63,11 @@ const NewPlayerForm = ({ refreshPlayers }) => {
 
           <div className="input-container">
             <label>
-              Name:{" "}
               <input
                 type="text"
                 name="name"
                 value={name}
+                placeholder="Name"
                 onChange={(e) => setName(e.target.value)}
                 required
               />
@@ -76,11 +76,11 @@ const NewPlayerForm = ({ refreshPlayers }) => {
 
           <div className="input-container">
             <label>
-              Breed:{" "}
               <input
                 type="text"
                 name="breed"
                 value={breed}
+                placeholder="Breed"
                 onChange={(e) => setBreed(e.target.value)}
                 required
               />
@@ -89,11 +89,11 @@ const NewPlayerForm = ({ refreshPlayers }) => {
 
           <div className="input-container">
             <label>
-              Image URL:{" "}
               <input
                 type="url"
                 name="imageUrl"
                 value={urlImage}
+                placeholder="Image URL"
                 onChange={(e) => setUrlImage(e.target.value)}
                 required
               />
@@ -102,14 +102,13 @@ const NewPlayerForm = ({ refreshPlayers }) => {
 
           <div className="input-container">
             <label>
-              Status:{" "}
               <select
                 name="status"
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
                 required
               >
-                <option value="">Select status</option>
+                <option value="">Select Status</option>
                 <option value="bench">Bench</option>
                 <option value="field">Field</option>
               </select>

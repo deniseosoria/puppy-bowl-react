@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
 const SinglePlayer = () => {
-  const {  id } = useParams(); // Get the player ID from the route
+  const { id  } = useParams(); // Get the player ID from the route
   const [player, setPlayer] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
