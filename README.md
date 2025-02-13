@@ -54,16 +54,4 @@ To run the project locally, follow these steps:
 - **Search for a Player**: Type a name in the search bar to filter and display players that match your query.
 - **Delete a Player**: Click the delete button on any player to remove them from the list.
 
-## File Structure
-
-/puppy-bowl-react-project
-├── /src
-│   ├── /components
-│   │   ├── AllPlayers.js
-│   │   ├── SinglePlayer.js
-│   │   ├── NewPlayerForm.js
-│   │   └── SearchBar.js
-│   ├── /App.js
-│   └── /index.js
-└── package.json
 
