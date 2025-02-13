@@ -48,6 +48,7 @@ To run the project locally, follow these steps:
 
 ## Images
 
+![All Players Image](./src/assets/imgs/all-puppies.png)
+
 ![Single Player Image](./src/assets/imgs/single-puppy.png)
 
-![All Players Image](.\src\assets\imgs\all-puppies.png)
