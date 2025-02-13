@@ -1,4 +1,4 @@
-#React Puppy Bowl Project
+# React Puppy Bowl Project
 
 Link: https://superlative-melba-17b5c9.netlify.app/
 
@@ -48,7 +48,9 @@ To run the project locally, follow these steps:
 
 ## Images
 
+- **View Players**:
 ![All Players Image](./src/assets/imgs/all-puppies.png)
 
+- **Player Details**
 ![Single Player Image](./src/assets/imgs/single-puppy.png)
 
