@@ -1,6 +1,6 @@
 #React Puppy Bowl Project
 
-Link: https://denise-puppybowl-react.netlify.app/
+Link: https://superlative-melba-17b5c9.netlify.app/
 
 This project allows users to interact with a list of puppies competing in the Puppy Bowl. They can view player details, create new players, search for specific players by name, and delete players. The project is built using React and provides an engaging user interface.
 
