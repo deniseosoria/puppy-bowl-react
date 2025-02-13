@@ -15,7 +15,6 @@ This project allows users to interact with a list of puppies competing in the Pu
 ## Technologies Used
 
 - **React**: For building the user interface.
-- **React Router**: For navigating between different pages in the app.
 - **CSS**: For styling the components.
 
 ## Installation
@@ -45,13 +44,3 @@ To run the project locally, follow these steps:
     ```
 
 5. Visit `http://localhost:3000` to view the app in action.
-
-## Usage
-
-- **View Players**: On the homepage, you'll see a list of all the puppies competing in the Puppy Bowl.
-- **See Details**: Click on the "See Details" button next to any player to view their team and owner information.
-- **Create a New Player**: Fill out the form on the "Create New Player" page to add a new puppy to the list.
-- **Search for a Player**: Type a name in the search bar to filter and display players that match your query.
-- **Delete a Player**: Click the delete button on any player to remove them from the list.
-
-
