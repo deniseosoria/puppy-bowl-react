@@ -72,7 +72,7 @@ function App() {
                     <div id="player-form">
                       <NewPlayerForm refreshPlayers={fetchAllPlayers} />
                     </div>
-                    <div id="players">
+                    <div  id="players">
                       <AllPlayers
                         players={players}
                         setPlayers={setPlayers}

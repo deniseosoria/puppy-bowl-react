@@ -29,13 +29,13 @@ const AllPlayers = ({ players, setPlayers, API_URL }) => {
   }
 
   return (
-    <div>
+    <div className="player-container">
       <h2>All Players</h2>
       <div className="grid-container">
         {players.map((player) => (
           <div className="grid-item" key={player.id}>
             <h3>{player.name}</h3>
-            <img src={player.imageUrl} alt={player.name} />
+            <img src={player.imageUrl || "https://via.placeholder.com/200" } alt={player.name || "Player Image"} style={{ maxWidth: "200px", height: "150px" }} />
             <br />
 
             <Link to={`/player/${player.id}`}>More Details</Link>

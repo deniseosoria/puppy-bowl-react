@@ -15,6 +15,7 @@ This project allows users to interact with a list of puppies competing in the Pu
 ## Technologies Used
 
 - **React**: For building the user interface.
+- **React Router**: For navigating between different pages in the app.
 - **CSS**: For styling the components.
 
 ## Installation
@@ -44,3 +45,7 @@ To run the project locally, follow these steps:
     ```
 
 5. Visit `http://localhost:3000` to view the app in action.
+
+!["Single Player Image"](single-puppy.png)
+
+!["All Players Image"](all-puppies.png)

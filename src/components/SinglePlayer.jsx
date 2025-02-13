@@ -66,6 +66,7 @@ const SinglePlayer = () => {
       <img
         src={player.imageUrl || "https://via.placeholder.com/200"}
         alt={player.name || "Unknown"}
+        style={{ maxWidth: "300px", height: "auto" }}
       />
       <h3>ID: {player.id || "N/A"}</h3>
       <h3>Breed: {player.breed || "Unknown"}</h3>
