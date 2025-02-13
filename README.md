@@ -46,6 +46,8 @@ To run the project locally, follow these steps:
 
 5. Visit `http://localhost:3000` to view the app in action.
 
-!["Single Player Image"](single-puppy.png)
+## Images
 
-!["All Players Image"](all-puppies.png)
+![Single Player Image](./src/assets/imgs/single-puppy.png)
+
+![All Players Image](.\src\assets\imgs\all-puppies.png)
