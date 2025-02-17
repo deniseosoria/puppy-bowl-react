@@ -12,11 +12,21 @@ This project allows users to interact with a list of puppies competing in the Pu
 - **Search Players**: A search bar where users can type a player's name and see only the players that match the search criteria.
 - **Delete Player**: A delete button that removes a player from the list.
 
-## Technologies Used
+## Design & Development Highlights
+
+- Designed an engaging game interface to streamline player management and improve user interaction with player data.
+- Integrated **React Router** for seamless navigation between pages and dynamic route handling.
+- Implemented **CRUD** functionality, including adding, viewing, and deleting players via **JavaScript Fetch API**.
+- Managed state effectively with **useState** and **useEffect** hooks for real-time updates.
+- Used **Git/GitHub** to maintain clean, well-documented code.
+
+## Tools & Technologies
 
 - **React**: For building the user interface.
-- **React Router**: For navigating between different pages in the app.
+- **JavaScript**: For implementing the app's functionality.
 - **CSS**: For styling the components.
+- **HTML**: For structuring the content.
+- **APIs**: For handling data and CRUD operations.
 
 ## Installation
 
